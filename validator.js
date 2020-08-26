@@ -20,7 +20,7 @@ const telephoneCheck = str => {
     const countryCodeRegexp = new RegExp(`^${countryCode}`);
     
     //RegExp to check if area code and phone number is correct
-    const numberRegex = new RegExp(`\^\\d\{${areaCodeNum+phoneNumStart+phoneNumEnd}\}|^\\(\\d\{${areaCodeNum}\}\\)\\d\{${phoneNumStart}\}-?\\d{${phoneNumEnd}}|^\\d{${areaCodeNum}}-\\d{${phoneNumStart}}-\\d{${phoneNumEnd}}`);
+    const numberRegexp = new RegExp(`\^\\d\{${areaCodeNum+phoneNumStart+phoneNumEnd}\}|^\\(\\d\{${areaCodeNum}\}\\)\\d\{${phoneNumStart}\}-?\\d{${phoneNumEnd}}|^\\d{${areaCodeNum}}-\\d{${phoneNumStart}}-\\d{${phoneNumEnd}}`);
     
     
     //check if provided string is too short or too long
@@ -30,14 +30,14 @@ const telephoneCheck = str => {
     
     //check if country code is provided, then check if country code, area code and phone number are correct
     if (optionalLength == strLength) {
-        if (checkPhoneNumber(testString.slice(countryCode.length), numberRegex) && checkCountryCode(testString, countryCodeRegexp)) {
+        if (checkPhoneNumber(testString.slice(countryCode.length), numberRegexp) && checkCountryCode(testString, countryCodeRegexp)) {
             return true;
         }
         else return false;
     } 
 
     //Check if area code and phone number is correct if no country code is provided
-    return checkPhoneNumber(testString, numberRegex);
+    return checkPhoneNumber(testString, numberRegexp);
     
     
     
